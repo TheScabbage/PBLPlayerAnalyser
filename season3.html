@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>PBL Player Analyser</title>
+		<link rel="icon" href="https://recroomleague.com/assets/img/recroomicon.png"/>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"/>
+	</head>
+	<body>
+		<script></script>
+		<style>
+			.team-button {
+				margin: 4px;
+				display: inline-block;
+				height: 30px;
+				width: 100px;
+				text-align: center;
+				cursor: pointer;
+				transition: 0.1s;
+			}
+			#black-button {
+				background-color: #606060;
+			}
+			#green-button {
+				background-color: #00FF00;
+			}
+			#pink-button {
+				background-color: #FF69B4;
+			}
+			#yellow-button {
+				background-color: #FFFF00;
+			}
+			#white-button {
+				background-color: #DDDDDD;
+			}
+			#orange-button {
+				background-color: #FFA500;
+			}
+			#teal-button {
+				background-color: #008080;
+			}
+			#purple-button {
+				background-color: #FF00FF;
+			}
+			.team-button:hover {
+				background-color: #777777 !important;
+			}
+			.player-list-item {
+				  /*list-style: none;*/
+				  height: 0;
+				  line-height: 2em;
+				  margin: 10;
+				  padding: 0 0.5em;
+				  overflow: hidden;
+				  width: 10em;
+				  transition: 0.2s;
+				  opacity: 0;
+			}
+			.show {
+				height: 2em;
+				margin: 2px 0;
+				transition: 0.2s;
+				opacity: 1;
+				
+			}
+			.show:hover {
+				cursor: pointer;
+				background-color: #CCCCCC !important;
+			}
+		</style>
+		
+		<div>
+			<div id="black-button" class="team-button" onclick="showTeam('Black')">Black</div>
+			<div id="green-button" class="team-button" onclick="showTeam('Green')">Green</div>
+			<div id="pink-button" class="team-button" onclick="showTeam('Pink')">Pink</div>
+			<div id="yellow-button" class="team-button" onclick="showTeam('Yellow')">Yellow</div>
+			<div id="white-button" class="team-button" onclick="showTeam('White')">White</div>
+			<div id="orange-button" class="team-button" onclick="showTeam('Orange')">Orange</div>
+			<div id="teal-button" class="team-button" onclick="showTeam('Teal')">Teal</div>
+			<div id="purple-button" class="team-button"onclick="showTeam('Purple')">Purple</div>
+		</div>
+		<h2 id="team-header"></h2>
+		<ul id="team-players" style="list-style: none">
+		</ul>
+		<style>
+			#overlay1 {
+				display: block; 
+				width: 410px;
+				height: 80px;
+				left: 0px;
+			}
+			#overlay2 {
+				display: block; 
+				/*top: 88px;*/ 
+				left: 0px;
+				height: 320px;
+				width: 88px;
+			}
+			#overlay3 {
+				display: block; 
+				/*top: 88px; */
+				left: 340px;
+				height: 320px;
+				width: 70px;
+			}
+			.overlay {
+				position: absolute;
+				background-color: rgba(255,255,255,1); 
+				z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+				/* cursor: pointer; Add a pointer on hover */
+			}
+			body
+			{
+			  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+			  font-size: 1rem;
+			  font-weight: 400;
+			  line-height: 1.5;
+			  color: #212529;
+			}
+			h2
+			{
+			  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+			  font-size: 1.5rem;
+			  font-weight: 400;
+			  line-height: 1.5;
+			  /* color: #f16e46; */
+			}
+		</style>
+		<div id="overlay1" class="overlay"></div>
+		<div id="overlay2" class="overlay"></div>
+		<div id="overlay3" class="overlay"></div>
+		<iframe src="https://rec.net/user/coach" id="local-player-image" scrolling="no" style="pointer-events: none; width: 400px; height: 400px;  overflow: hidden;">
+		</iframe>
+		<div style="display: inline-block; vertical-align: top;">
+		
+			<div style="height: 100px; display: block;"></div>
+				<h2 id="player-team">
+				</h2>
+				<div id="avg-hits">
+					Average Hits: ∞
+				</div>
+				<div id="avg-outs">
+					Average Outs: 0
+				</div>
+				<div id="kd">
+					KD: UNDEFINED
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var teams = [
+				{
+					name:"Black",
+					customName:"The Black Hats",
+					players:["Ottolotl", "Azrael", "michaelholland2015","Fancyam","Pigsty55","Kimbah"]
+				},
+				{
+					name:"Green",
+					customName:"Greenades",
+					players:["Fastrabbit17","Priscilla","plabick","Omtzerioni","pcfixit"]
+				},
+				{
+					name:"Pink",
+					customName:"Puffy Pink Power Paintball Platoon",
+					players:["Smellykid83","rmmm1m","The_Woman","Scabbage","PengoPlays","WeedAndHops"]
+				},
+				{
+					name:"Yellow",
+					customName:"Mellow Yellow",
+					players:["Eva","serra","Hoborg","farrerz","BigRedRobotOfDoom","unlistedgamer"]
+				},
+				{
+					name:"White",
+					customName:"White Noise",
+					players:["Sparklingrabbit","Loaded_Lemons","UnicornPrincess","ChaseJake","Buck","jamlikejelly"]
+				},
+				{
+					name:"Orange",
+					customName:"The Orange Dream Machine",
+					players:["GoodBet","Dwangler","Cool_D","evr","thumperthegod","mch"]
+				},
+				{
+					name:"Teal",
+					customName:"Balls of Teal",
+					players:["Borg","joshie","Bassna","Denver.dash","DaybridgeGhost","for2dk"]
+				},
+				{
+					name:"Purple",
+					customName:"Purple Paintball Eaters",
+					players:["StairChicken","jongyi12","Dinoman715","chesamo","alugo3"]
+				}
+			];
+			
+			document.getElementById("local-player-image").src = "https://rec.net/user/Dangergirl5777";
+			
+			function showTeam(teamName)
+			{
+				var team;
+				// find the team:
+				for(var ii = 0; ii < 8; ii++)
+				{
+					if(teams[ii].name === teamName)
+					{
+						team = teams[ii];
+					}
+				}
+				
+				console.log(team.customName);
+				var teamHeader = document.getElementById("team-header");
+				teamHeader.innerHTML = team.customName;
+				var col = getTeamHexColor(teamName);
+				teamHeader.style = "color: " + col + ";";
+				console.log(teamName + ": " + col);
+				
+				var playerList = document.getElementById("team-players");
+				
+				var players = "";
+				var playerItems = [];
+				$("#team-players").empty();
+				
+				for(var ii = 0; ii < team.players.length; ii++)
+				{
+					var newLi = document.createElement("li");
+					newLi.innerHTML = team.players[ii];
+					playerList.appendChild(newLi);
+					newLi.className = "player-list-item";
+					newLi.style.backgroundColor = col;
+					
+					playerItems.push(newLi);
+					console.log("Player items length: " + playerItems.length);
+					showListItem(newLi, ii);
+				}
+				
+				
+			}
+			
+			function setPlayer(player)
+			{
+				document.getElementById("local-player-image").src = "https://rec.net/user/" + player;
+			}
+			
+			function showListItem(playerItem, time) 
+			{
+				setTimeout(
+					function() {
+						playerItem.className = playerItem.className + " show ";
+						console.log("Set " + playerItem.innerHTML + " to show.");
+						playerItem.onclick = function(){setPlayer(this.innerHTML);};
+						console.log(playerItem.onclick);
+					}, 40 * time
+				);
+			}
+			
+			function getTeamHexColor(teamName)
+			{
+				var lowerTeamName = teamName.toLowerCase();
+				switch(lowerTeamName)
+				{
+					case "black":
+						return "#606060";
+					case "green":
+						return "#00FF00";
+					case "pink":
+						return "#FF69b4";
+					case "yellow":
+						return "#DDDD1F";
+					case "white":
+						return "#DDDDDD";
+					case "orange":
+						return "#FFA500";
+					case "teal":
+						return "#008080";
+					case "purple":
+						return "#FF00FF";
+					default:
+						return "#000000";
+				}
+			}
+		</script>
+	</body>
+</html>
