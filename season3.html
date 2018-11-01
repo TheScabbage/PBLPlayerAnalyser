@@ -83,26 +83,33 @@
 		</ul>
 		<style>
 			#overlay1 {
-				display: block; 
 				width: 410px;
 				height: 80px;
 				left: 0px;
 			}
 			#overlay2 {
-				display: block; 
 				/*top: 88px;*/ 
 				left: 0px;
 				height: 320px;
 				width: 88px;
 			}
 			#overlay3 {
-				display: block; 
 				/*top: 88px; */
 				left: 340px;
 				height: 320px;
 				width: 70px;
 			}
+			#profile-cover {
+				display: block;
+				left: 0px;
+				width: 400px;
+				height 400px;
+				background-color: #000000;
+				opacity: 0.5;
+				transition: 0.9s;
+			}
 			.overlay {
+				display: block; 
 				position: absolute;
 				background-color: rgba(255,255,255,1); 
 				z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
@@ -128,10 +135,10 @@
 		<div id="overlay1" class="overlay"></div>
 		<div id="overlay2" class="overlay"></div>
 		<div id="overlay3" class="overlay"></div>
-		<iframe src="https://rec.net/user/coach" id="local-player-image" scrolling="no" style="pointer-events: none; width: 400px; height: 400px;  overflow: hidden;">
+		<div id="profile-cover" class="overlay"></div>
+		<iframe src="https://rec.net/user/coach" id="local-player-image" onload="onProfileLoad()" scrolling="no" style="pointer-events: none; width: 400px; height: 400px; overflow: hidden; transition: 1s;">
 		</iframe>
 		<div style="display: inline-block; vertical-align: top;">
-		
 			<div style="height: 100px; display: block;"></div>
 				<h2 id="player-team">
 				</h2>
@@ -147,6 +154,7 @@
 			</div>
 		</div>
 		<script type="text/javascript">
+			var currentPlayer = "";
 			var teams = [
 				{
 					name:"Black",
@@ -190,7 +198,11 @@
 				}
 			];
 			
-			
+			function onProfileLoad()
+			{
+				console.log("Loaded profile");
+				document.getElementById("local-player-image").style.opacity = 1;
+			}
 			
 			function showTeam(teamName)
 			{
@@ -235,7 +247,16 @@
 			
 			function setPlayer(player)
 			{
+				if(player === currentPlayer)
+				{
+					return;
+				}
+				currentPlayer = player;
+			
+				document.getElementById("local-player-image").style.opacity = 0;
+				console.log("Set player to " + player);
 				document.getElementById("local-player-image").src = "https://rec.net/user/" + player;
+				//setTimeout(function(){document.getElementById("local-player-image").style.opacity = 1;}, 1500);
 			}
 			
 			function showListItem(playerItem, time) 
