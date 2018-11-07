@@ -9,55 +9,55 @@ namespace CSVConverter
         {
             if (args.Length <= 1)
             {
-                return;
-            }
-            if (!File.Exists(args[0]))
-            {
-                Console.WriteLine("No such file exists.");
+                Console.WriteLine("Invalid number of arguments. Usage:\nCSVConverter.exe [input file] [output file]");
             }
             else
             {
-                string result = "";
-                try
+                if (!File.Exists(args[0]))
                 {
-
-                    using (StreamReader fs = File.OpenText(args[0]))
+                    Console.WriteLine("No such file exists.");
+                }
+                else
+                {
+                    string result = "";
+                    try
                     {
-                        string header = fs.ReadLine();
-                        string line = fs.ReadLine();
 
-                        while (line != null)
+                        using (StreamReader fs = File.OpenText(args[0]))
                         {
-                            result += line;
+                            string header = fs.ReadLine();
+                            string line = fs.ReadLine();
 
-                            line = fs.ReadLine();
-
-                            if (line != null)
+                            while (line != null)
                             {
-                                result += "\\n";
+                                result += line;
+
+                                line = fs.ReadLine();
+
+                                if (line != null)
+                                {
+                                    result += "\\n";
+                                }
                             }
                         }
                     }
-                }
-                catch (IOException e)
-                {
-                    Console.WriteLine(e.Message);
-                }
+                    catch (IOException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
 
-                try
-                {
-                    if(!File.Exists(args[1]))
+                    try
                     {
-                        File.Create(args[1]);
+                        using (StreamWriter fs = new StreamWriter(args[1]))
+                        {
+                            fs.Write(result);
+                            Console.WriteLine("Successfully converted file.");
+                        }
                     }
-                    using (StreamWriter fs = new StreamWriter(args[1]))
+                    catch (IOException e)
                     {
-                        fs.Write(result);
+                        Console.WriteLine(e.Message);
                     }
-                }
-                catch (IOException e)
-                {
-                    Console.WriteLine(e.Message);
                 }
             }
         }
