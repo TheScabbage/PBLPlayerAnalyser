@@ -9,6 +9,9 @@
 		<script></script>
 		<style>
 			.team-button {
+				outline-style: solid;
+				outline-color: #404144;
+				outline-width: 1px;
 				margin: 4px;
 				display: inline-block;
 				height: 30px;
@@ -46,10 +49,13 @@
 			}
 			.player-list-item {
 				  /*list-style: none;*/
+				  outline-style: solid;
+				  outline-width: 0.05em;
+				  outlne-color: #404144;
 				  height: 0;
 				  line-height: 2em;
-				  margin: 10;
-				  padding: 0 0.5em;
+				  margin: 15;
+				  padding: 0 6px;
 				  overflow: hidden;
 				  width: 10em;
 				  transition: 0.2s;
@@ -57,10 +63,9 @@
 			}
 			.show {
 				height: 2em;
-				margin: 2px 0;
+				margin: 5px 0;
 				transition: 0.2s;
 				opacity: 1;
-				
 			}
 			.show:hover {
 				cursor: pointer;
@@ -82,36 +87,44 @@
 		<ul id="team-players" style="list-style: none">
 		</ul>
 		<style>
+			#local-player-image {
+				position: relative;
+				left: 20px;
+			}
 			#overlay1 {
-				width: 410px;
+				width: 430px;
 				height: 80px;
 				left: 0px;
 			}
 			#overlay2 {
-				/*top: 88px;*/ 
+				top: 550px;
 				left: 0px;
-				height: 320px;
-				width: 88px;
+				height: 60px;
+				width: 430px;
 			}
 			#overlay3 {
-				/*top: 88px; */
-				left: 340px;
-				height: 320px;
-				width: 70px;
+				left: 410px;
+				height: 600px;
+				width: 20px;
 			}
-			#profile-cover {
-				display: block;
-				left: 0px;
-				width: 400px;
-				height 400px;
-				background-color: #000000;
-				opacity: 0.5;
-				transition: 0.9s;
+			#overlay4 {
+				height: 600px;
+				width: 22px;
+			}
+			#overlay5 {
+				left: 22px;
+				top: 80px;
+				height: 470px;
+				width: 388px;
+				background-color: rgba(0,0,0,0);
+				outline-style: solid;
+				outline-width: 2px;
+				outline-color: #404144;
 			}
 			.overlay {
 				display: block; 
 				position: absolute;
-				background-color: rgba(255,255,255,1); 
+				background-color: #FFFFFF; 
 				z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
 				/* cursor: pointer; Add a pointer on hover */
 			}
@@ -132,27 +145,31 @@
 			  /* color: #f16e46; */
 			}
 		</style>
-		<div id="overlay1" class="overlay"></div>
-		<div id="overlay2" class="overlay"></div>
-		<div id="overlay3" class="overlay"></div>
-		<div id="profile-cover" class="overlay"></div>
-		<iframe src="https://rec.net/user/coach" id="local-player-image" onload="onProfileLoad()" scrolling="no" style="pointer-events: none; width: 400px; height: 400px; overflow: hidden; transition: 1s;">
-		</iframe>
+		<div id="profile-container" style="position: relative; display: inline-block; width: 450px; height: 600px">
+			<div id="overlay1" class="overlay"></div>
+			<div id="overlay2" class="overlay"></div>
+			<div id="overlay3" class="overlay"></div>
+			<div id="overlay4" class="overlay"></div>
+			<div id="overlay5" class="overlay"></div>
+			<iframe src="https://rec.net/user/coach" id="local-player-image" onload="onProfileLoad()" scrolling="no" style="position: absolute; pointer-events: none; width: 400px; height: 600px; overflow: hidden; transition: 1s;">
+			</iframe>
+			
+		</div>
 		<div style="display: inline-block; vertical-align: top;">
-			<div style="height: 100px; display: block;"></div>
-				<h2 id="player-team">
-				</h2>
-				<div id="avg-hits">
-					Average Hits: ∞
-				</div>
-				<div id="avg-outs">
-					Average Outs: 0
-				</div>
-				<div id="kd">
-					KD: UNDEFINED
+				<div style="height: 100px; display: block;"></div>
+					<h2 id="player-team">
+					</h2>
+					<div id="avg-hits">
+						Average Hits: ∞
+					</div>
+					<div id="avg-outs">
+						Average Outs: 0
+					</div>
+					<div id="kd">
+						KD: UNDEFINED
+					</div>
 				</div>
 			</div>
-		</div>
 		<script type="text/javascript">
 			var currentPlayer = "";
 			var teams = [
@@ -201,7 +218,8 @@
 			function onProfileLoad()
 			{
 				console.log("Loaded profile");
-				document.getElementById("local-player-image").style.opacity = 1;
+				var profile = document.getElementById("local-player-image");
+				profile.style.opacity = 1;
 			}
 			
 			function showTeam(teamName)
