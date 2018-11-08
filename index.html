@@ -246,7 +246,7 @@
 			  /* color: #f16e46; */
 			}
 		</style>
-		<div id="profile-container" style="position: relative; display: inline-block; width: 450px; height: 600px">
+		<div id="profile-container" style=" position: relative; display: inline-block; width: 450px; height: 600px">
 			<div id="overlay1" class="overlay"></div>
 			<div id="overlay2" class="overlay"></div>
 			<div id="overlay3" class="overlay"></div>
@@ -256,19 +256,159 @@
 			</iframe>
 			
 		</div>
+		
+		<style>
+			.num-sum-container {
+				position: relative;
+				width: 20em;
+				height: 2em;
+			}
+			
+			.num-sum {
+				position: relative;
+				width: 20em;
+				height: 1em;
+			}
+			
+			.num-sum-left {
+				outline-style: solid;
+				outline-width: 1px;
+			
+				display: inline-block;
+				position: absolute;
+				left: 5em;
+				top: 0.5em;
+				height: 0.1em;
+				width: 5em;
+				vertical-align: middle;
+				background-color: green;
+				
+				transition: 0.5s;
+			}
+			
+			.num-sum-mid {
+				outline-style: solid;
+				outline-width: 1px;
+			
+				display: inline-block;
+				align: center;
+				position: absolute;
+				left: 9.8em;
+				top: 0.2em;
+				width: 0.4em;
+				height: 0.6em;
+				background-color: green;
+				
+				transition: 0.5s;
+			}
+			
+			.num-sum-right {
+				outline-style: solid;
+				outline-width: 1px;
+			
+				display: inline-block;
+				position: absolute;
+				left: 10em;
+				width: 5em;
+				top: 0.5em;
+				height: 0.1em;
+				background-color: green;
+				
+				transition: 0.5s;
+			}
+			
+			.measure-bar {
+				margin: 0px;
+				border: 0px;
+				width: 0.1em;
+				height: 1em;
+				display: inline-block;
+				vertical-align: top;
+				align: left;
+				background-color: #3b3e42;
+			}
+			
+			.measure-space {
+				margin: 0px;
+				border: 0px;
+				display: inline-block;
+				align: left;
+				vertical-align: top;
+				width: 1.34em;
+				height: 0.5em;
+				background-color: #d3dbe5;
+			}
+			
+			.num-sum-label {
+				
+				display: inline-block;
+				border: 0px;
+				margin: 0px;
+				width: 6.45em;
+				height: 1em;
+			}
+			
+			.num-sum-text {
+				font-size: 0.8em;
+				position: relative;
+				top: -1.2em;
+			}
+		</style>
+		
 		<div style="display: inline-block; vertical-align: top;">
 				<div style="height: 100px; display: block;"></div>
 					<h2 id="player-team">
 					</h2>
 					<p id="avg-hits" style="text-align: center;">
-						Average Hits:
+						Hits
 					</p>
 					<p id="avg-outs" style="text-align: center;">
-						Average Outs:
+						Outs
 					</p>
 					<p id="kd" style="text-align: center;">
-						KD: UNDEFINED
+						K/D
 					</p>
+										<div class="num-sum-container">
+						<div class="num-sum">
+							<div class="num-sum-label">
+								<p class="num-sum-text">0</p>
+							</div>
+							<div class="num-sum-label" style="text-align: center;">
+								<p class="num-sum-text">1.5</p>
+							</div>
+							<div class="num-sum-label" style="text-align: right;">
+								<p class="num-sum-text">3</p>
+							</div>
+						</div>
+						<div class="num-sum">
+							<div class="measure-bar"></div>
+							<div class="measure-space"></div>
+							<div class="measure-bar"></div>
+							<div class="measure-space"></div>
+							<div class="measure-bar"></div>
+							<div class="measure-space"></div>
+							<div class="measure-bar"></div>
+							<div class="measure-space"></div>
+							<div class="measure-bar"></div>
+							<div class="measure-space"></div>
+							<div class="measure-bar"></div>
+							<div class="measure-space"></div>
+							<div class="measure-bar"></div>
+							<div class="measure-space"></div>
+							<div class="measure-bar"></div>
+							<div class="measure-space"></div>
+							<div class="measure-bar"></div>
+							<div class="measure-space"></div>
+							<div class="measure-bar"></div>
+							<div class="measure-space"></div>
+							<div class="measure-bar"></div>
+						</div>
+						<div class="num-sum">
+							<div id="kdslider-min" class="num-sum-left"></div>
+							<div id="kdslider-max" class="num-sum-right"></div>
+							<div id="kdslider-mid" class="num-sum-mid"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 		<script type="text/javascript">
@@ -338,6 +478,18 @@
 			var MATCH = 12;
 			var MATCH_OUTCOME = 13;
 			
+			var count = 0;
+			for(var tt = 0; tt < teams.length; tt++)
+			{
+				for(var pp = 0; pp < teams[tt].players.length; pp++)
+				{
+					console.log(teams[tt].players[pp]);
+					count++;
+				}
+				
+			}
+			console.log(count);
+			
 			// NOTE: this is actually an array. It is split() at the end by the newline character.
 			var playoffDataEntries = "River,CTF,Blue,Scabbage,Pink_1,Teal_8,33,45,0,20181105,1,0,1,0\nRiver,CTF,Blue,Smellykid83,Pink_1,Teal_8,54,53,0,20181105,1,0,1,0\nRiver,CTF,Blue,The_Woman,Pink_1,Teal_8,33,48,0,20181105,1,0,1,0\nRiver,CTF,Blue,PengoPlays,Pink_1,Teal_8,27,31,0,20181105,1,0,1,0\nRiver,CTF,Red,joshie,Teal_8,Pink_1,50,39,0,20181105,1,0,1,0\nRiver,CTF,Red,DaybridgeGhost,Teal_8,Pink_1,45,27,0,20181105,1,0,1,0\nRiver,CTF,Red,Borg,Teal_8,Pink_1,36,36,0,20181105,1,0,1,0\nRiver,CTF,Red,for2dk,Teal_8,Pink_1,46,45,0,20181105,1,0,1,0\nRiver,CTF,Red,Scabbage,Pink_1,Teal_8,48,45,0,20181105,2,-1,1,0\nRiver,CTF,Red,Smellykid83,Pink_1,Teal_8,34,51,0,20181105,2,-1,1,0\nRiver,CTF,Red,rmmm1m,Pink_1,Teal_8,45,42,0,20181105,2,-1,1,0\nRiver,CTF,Red,PengoPlays,Pink_1,Teal_8,29,34,0,20181105,2,-1,1,0\nRiver,CTF,Blue,joshie,Teal_8,Pink_1,38,46,1,20181105,2,1,1,1\nRiver,CTF,Blue,DaybridgeGhost,Teal_8,Pink_1,46,39,0,20181105,2,1,1,1\nRiver,CTF,Blue,Borg,Teal_8,Pink_1,43,34,0,20181105,2,1,1,1\nRiver,CTF,Blue,for2dk,Teal_8,Pink_1,35,47,0,20181105,2,1,1,1\nRiver,CTF,Blue,ChaseJake,White_4,Green_5,22,14,2,20181023,1,1,2,1\nRiver,CTF,Blue,Sparklingrabbit,White_4,Green_5,25,18,0,20181023,1,1,2,1\nRiver,CTF,Blue,UnicornPrincess,White_4,Green_5,24,16,0,20181023,1,1,2,1\nRiver,CTF,Blue,Loaded_Lemons,White_4,Green_5,21,14,1,20181023,1,1,2,1\nRiver,CTF,Red,Fastrabbit17,Green_5,White_4,10,21,0,20181023,1,-1,2,0\nRiver,CTF,Red,Robert_ssbn732,Green_5,White_4,13,21,0,20181023,1,-1,2,0\nRiver,CTF,Red,pcfixit,Green_5,White_4,24,23,0,20181023,1,-1,2,0\nRiver,CTF,Red,DavidBengt,Green_5,White_4,15,27,0,20181023,1,-1,2,0\nRiver,CTF,Red,ChaseJake,White_4,Green_5,22,13,2,20181023,2,1,2,1\nRiver,CTF,Red,jamlikejelly,White_4,Green_5,5,4,0,20181023,2,1,2,1\nRiver,CTF,Red,Buck,White_4,Green_5,23,16,1,20181023,2,1,2,1\nRiver,CTF,Red,Loaded_Lemons,White_4,Green_5,30,12,0,20181023,2,1,2,1\nRiver,CTF,Blue,Fastrabbit17,Green_5,White_4,19,22,0,20181023,2,-1,2,0\nRiver,CTF,Blue,Robert_ssbn732,Green_5,White_4,11,21,0,20181023,2,-1,2,0\nRiver,CTF,Blue,pcfixit,Green_5,White_4,21,23,0,20181023,2,-1,2,0\nRiver,CTF,Blue,DavidBengt,Green_5,White_4,7,24,0,20181023,2,-1,2,0\nRiver,CTF,Blue,enigmaticeva,Yellow_7,Orange_2,15,20,0,20181026,1,-1,3,0\nRiver,CTF,Blue,unlistedgamer,Yellow_7,Orange_2,5,12,0,20181026,1,-1,3,0\nRiver,CTF,Blue,farrerz,Yellow_7,Orange_2,11,22,0,20181026,1,-1,3,0\nRiver,CTF,Blue,Hoborg,Yellow_7,Orange_2,18,19,0,20181026,1,-1,3,0\nRiver,CTF,Red,GoodBet,Orange_2,Yellow_7,22,13,1,20181026,1,1,3,1\nRiver,CTF,Red,Dwangler,Orange_2,Yellow_7,23,13,0,20181026,1,1,3,1\nRiver,CTF,Red,mch,Orange_2,Yellow_7,12,12,1,20181026,1,1,3,1\nRiver,CTF,Red,Cool_D,Orange_2,Yellow_7,16,37,1,20181026,1,1,3,1\nRiver,CTF,Blue,EVR-1,Orange_2,Yellow_7,31,37,0,20182026,2,-1,3,1\nRiver,CTF,Blue,GoodBet,Orange_2,Yellow_7,52,46,0,20182026,2,-1,3,1\nRiver,CTF,Blue,mch,Orange_2,Yellow_7,33,47,0,20182026,2,-1,3,1\nRiver,CTF,Blue,Dwangler,Orange_2,Yellow_7,40,43,0,20182026,2,-1,3,1\nRiver,CTF,Red,unlistedgamer,Yellow_7,Orange_2,16,19,0,20182026,2,1,3,0\nRiver,CTF,Red,enigmaticeva,Yellow_7,Orange_2,62,42,0,20182026,2,1,3,0\nRiver,CTF,Red,Hoborg,Yellow_7,Orange_2,37,46,0,20182026,2,1,3,0\nRiver,CTF,Red,farrerz,Yellow_7,Orange_2,58,49,1,20182026,2,1,3,0\nRiver,CTF,Blue,enigmaticeva,Yellow_7,Orange_2,60,50,0,20181026,3,-1,3,0\nRiver,CTF,Blue,unlistedgamer,Yellow_7,Orange_2,14,29,0,20181026,3,-1,3,0\nRiver,CTF,Blue,Hoborg,Yellow_7,Orange_2,46,50,0,20181026,3,-1,3,0\nRiver,CTF,Blue,farrerz,Yellow_7,Orange_2,57,51,0,20181026,3,-1,3,0\nRiver,CTF,Red,Dwangler,Orange_2,Yellow_7,48,42,0,20181026,3,1,3,1\nRiver,CTF,Red,GoodBet,Orange_2,Yellow_7,59,46,2,20181026,3,1,3,1\nRiver,CTF,Red,mch,Orange_2,Yellow_7,33,46,0,20181026,3,1,3,1\nRiver,CTF,Red,Cool_D,Orange_2,Yellow_7,40,43,0,20181026,3,1,3,1\nRiver,CTF,Blue,Skelly,Black_3,6,59,43,0,20181024,1,0,4,0\nRiver,CTF,Blue,Fancyam,Black_3,6,38,46,0,20181024,1,0,4,0\nRiver,CTF,Blue,michaelholland2015,Black_3,6,37,42,0,20181024,1,0,4,0\nRiver,CTF,Blue,Pigsty55,Black_3,6,36,57,1,20181024,1,0,4,0\nRiver,CTF,Red,chesamo,Purple_6,3,29,43,0,20181024,1,0,4,1\nRiver,CTF,Red,jongyi12,Purple_6,3,61,43,1,20181024,1,0,4,1\nRiver,CTF,Red,StairChicken,Purple_6,3,48,45,0,20181024,1,0,4,1\nRiver,CTF,Red,Willybub,Purple_6,3,50,39,0,20181024,1,0,4,1\nRiver,CTF,Red,Skelly,Black_3,6,23,27,0,20181024,2,-1,4,0\nRiver,CTF,Red,Fancyam,Black_3,6,41,49,0,20181024,2,-1,4,0\nRiver,CTF,Red,michaelholland2015,Black_3,6,33,41,0,20181024,2,-1,4,0\nRiver,CTF,Red,Pigsty55,Black_3,6,26,50,0,20181024,2,-1,4,0\nRiver,CTF,Blue,chesamo,Purple_6,3,30,37,1,20181024,2,1,4,1\nRiver,CTF,Blue,jongyi12,Purple_6,3,50,35,0,20181024,2,1,4,1\nRiver,CTF,Blue,StairChicken,Purple_6,3,51,39,0,20181024,2,1,4,1\nRiver,CTF,Blue,Willybub,Purple_6,3,54,37,1,20181024,2,1,4,1\nHomestead,TB,Blue,UnicornPrincess,White_4,Teal_8,20,23,0,20181107,1,1,5,1\nHomestead,TB,Blue,Loaded_Lemons,White_4,Teal_8,28,24,0,20181107,1,1,5,1\nHomestead,TB,Blue,ChaseJake,White_4,Teal_8,25,19,0,20181107,1,1,5,1\nHomestead,TB,Blue,Sparklingrabbit,White_4,Teal_8,27,22,0,20181107,1,1,5,1\nHomestead,TB,Red,joshie,Teal_8,White_4,22,24,0,20181107,1,-1,5,0\nHomestead,TB,Red,Borg,Teal_8,White_4,22,25,0,20181107,1,-1,5,0\nHomestead,TB,Red,Bassna,Teal_8,White_4,29,28,0,20181107,1,-1,5,0\nHomestead,TB,Red,DaybridgeGhost,Teal_8,White_4,15,23,0,20181107,1,-1,5,0\nHomestead,TB,Blue,Borg,Teal_8,White_4,22,25,0,20181107,2,-1,5,0\nHomestead,TB,Blue,DaybridgeGhost,Teal_8,White_4,17,24,0,20181107,2,-1,5,0\nHomestead,TB,Blue,Bassna,Teal_8,White_4,22,28,0,20181107,2,-1,5,0\nHomestead,TB,Blue,joshie,Teal_8,White_4,9,23,0,20181107,2,-1,5,0\nHomestead,TB,Red,Loaded_Lemons,White_4,Teal_8,27,20,0,20181107,2,1,5,1\nHomestead,TB,Red,UnicornPrincess,White_4,Teal_8,32,20,0,20181107,2,1,5,1\nHomestead,TB,Red,Sparklingrabbit,White_4,Teal_8,19,15,0,20181107,2,1,5,1\nHomestead,TB,Red,ChaseJake,White_4,Teal_8,22,15,0,20181107,2,1,5,1\nHomestead,TB,Blue,GoodBet,Orange_2,Purple_6,41,25,0,20181031,1,-1,6,0\nHomestead,TB,Blue,Cool_D,Orange_2,Purple_6,18,22,0,20181031,1,-1,6,0\nHomestead,TB,Blue,mch,Orange_2,Purple_6,16,31,0,20181031,1,-1,6,0\nHomestead,TB,Blue,Dwangler,Orange_2,Purple_6,18,22,0,20181031,1,-1,6,0\nHomestead,TB,Red,chesamo,Purple_6,Orange_2,15,19,0,20181031,1,1,6,1\nHomestead,TB,Red,jongyi12,Purple_6,Orange_2,29,24,0,20181031,1,1,6,1\nHomestead,TB,Red,Dinoman715,Purple_6,Orange_2,23,23,0,20181031,1,1,6,1\nHomestead,TB,Red,StairChicken,Purple_6,Orange_2,33,27,0,20181031,1,1,6,1\nHomestead,TB,Blue,StairChicken,Purple_6,Orange_2,32,32,0,20181031,2,-1,6,1\nHomestead,TB,Blue,Dinoman715,Purple_6,Orange_2,17,30,0,20181031,2,-1,6,1\nHomestead,TB,Blue,chesamo,Purple_6,Orange_2,12,18,0,20181031,2,-1,6,1\nHomestead,TB,Blue,jongyi12,Purple_6,Orange_2,32,20,0,20181031,2,-1,6,1\nHomestead,TB,Red,GoodBet,Orange_2,Purple_6,29,23,0,20181031,2,1,6,0\nHomestead,TB,Red,Cool_D,Orange_2,Purple_6,18,17,0,20181031,2,1,6,0\nHomestead,TB,Red,mch,Orange_2,Purple_6,23,28,0,20181031,2,1,6,0\nHomestead,TB,Red,Dwangler,Orange_2,Purple_6,30,25,0,20181031,2,1,6,0\nHomestead,TB,Blue,Cool_D,Orange_2,Purple_6,18,24,0,20181031,3,-1,6,0\nHomestead,TB,Blue,GoodBet,Orange_2,Purple_6,30,27,0,20181031,3,-1,6,0\nHomestead,TB,Blue,EVR-1,Orange_2,Purple_6,17,25,0,20181031,3,-1,6,0\nHomestead,TB,Blue,Dwangler,Orange_2,Purple_6,19,24,0,20181031,3,-1,6,0\nHomestead,TB,Red,Dinoman715,Purple_6,Orange_2,25,23,0,20181031,3,1,6,1\nHomestead,TB,Red,jongyi12,Purple_6,Orange_2,20,20,0,20181031,3,1,6,1\nHomestead,TB,Red,StairChicken,Purple_6,Orange_2,41,24,0,20181031,3,1,6,1\nHomestead,TB,Red,Willybub,Purple_6,Orange_2,14,17,0,20181031,3,1,6,1\nHomestead,TB,Blue,michaelholland2015,Black_3,Yellow_7,27,27,0,20181106,1,-1,8,1\nHomestead,TB,Blue,Fancyam,Black_3,Yellow_7,27,28,0,20181106,1,-1,8,1\nHomestead,TB,Blue,Ottolotl,Black_3,Yellow_7,15,21,0,20181106,1,-1,8,1\nHomestead,TB,Blue,Skelly,Black_3,Yellow_7,29,24,0,20181106,1,-1,8,1\nHomestead,TB,Red,unlistedgamer,Yellow_7,Black_3,15,18,0,20181106,1,1,8,0\nHomestead,TB,Red,enigmaticeva,Yellow_7,Black_3,41,30,0,20181106,1,1,8,0\nHomestead,TB,Red,BigRedRobotOfDoom,Yellow_7,Black_3,12,17,0,20181106,1,1,8,0\nHomestead,TB,Red,farrerz,Yellow_7,Black_3,32,33,0,20181106,1,1,8,0\nHomestead,TB,Blue,Hoborg,Yellow_7,Black_3,12,28,0,20181106,2,-1,8,0\nHomestead,TB,Blue,enigmaticeva,Yellow_7,Black_3,43,26,0,20181106,2,-1,8,0\nHomestead,TB,Blue,farrerz,Yellow_7,Black_3,12,30,0,20181106,2,-1,8,0\nHomestead,TB,Blue,unlistedgamer,Yellow_7,Black_3,8,16,0,20181106,2,-1,8,0\nHomestead,TB,Red,Ottolotl,Black_3,Yellow_7,31,18,0,20181106,2,1,8,1\nHomestead,TB,Red,Fancyam,Black_3,Yellow_7,31,20,0,20181106,2,1,8,1\nHomestead,TB,Red,michaelholland2015,Black_3,Yellow_7,16,20,0,20181106,2,1,8,1\nHomestead,TB,Red,Skelly,Black_3,Yellow_7,22,17,0,20181106,2,1,8,1\nHomestead,TB,Blue,Hoborg,Yellow_7,Black_3,13,26,0,20181106,3,-1,8,0\nHomestead,TB,Blue,BigRedRobotOfDoom,Yellow_7,Black_3,10,10,0,20181106,3,-1,8,0\nHomestead,TB,Blue,farrerz,Yellow_7,Black_3,20,33,0,20181106,3,-1,8,0\nHomestead,TB,Blue,enigmaticeva,Yellow_7,Black_3,44,31,0,20181106,3,-1,8,0\nHomestead,TB,Red,michaelholland2015,Black_3,Yellow_7,28,21,0,20181106,3,1,8,1\nHomestead,TB,Red,Skelly,Black_3,Yellow_7,21,19,0,20181106,3,1,8,1\nHomestead,TB,Red,Fancyam,Black_3,Yellow_7,29,26,0,20181106,3,1,8,1\nHomestead,TB,Red,Ottolotl,Black_3,Yellow_7,22,21,0,20181106,3,1,8,1".split("\n");
 			
@@ -388,6 +540,40 @@
 				return entries;
 			}
 			
+			
+			// Returns all entries where the data in [column] matches the search string [query].
+			function searchEntries(query, column)
+			{
+				
+			}
+			
+			// Returns all entries from the provided array where the data in [column] matches [query]
+			function refineEntries(query, column, entries)
+			{
+				
+			}
+			
+			function setKDSlider(sliderName, min, mid, max)
+			{
+				var BAR_WIDTH = 20;
+				var minBar = document.getElementById(sliderName + "-min");
+				var avgBar = document.getElementById(sliderName + "-mid");
+				var maxBar = document.getElementById(sliderName + "-max");
+				
+				
+				minBar.style["left"] = valToKDSliderPos(min) + "em";
+				minBar.style["width"] = valToKDSliderPos(mid - min) + "em";
+				avgBar.style["left"] = valToKDSliderPos(mid) + "em";
+				maxBar.style["left"] = valToKDSliderPos(mid) + "em";
+				maxBar.style["width"]= valToKDSliderPos(max - mid) + "em";
+				
+			}
+			
+			function valToKDSliderPos(val)
+			{
+				return val / 3 * 20;
+			}
+			
 			function updateSettings()
 			{
 				FILTER_PLAYOFFS = document.getElementById("filter-playoffs").checked;
@@ -413,13 +599,12 @@
 				updateStats();
 			}
 			
-			
 			function setStats(entries)
 			{
-				var totalHits = 0, totalOuts = 0, kdAvg = 0;
+				var totalHits = 0, totalOuts = 0, kdAvg = 0, kdMin = 999999, kdMax = 0;
 				var n = entries.length;
 				
-				var tmpHit, tmpOut;
+				var tmpHit, tmpOut, tmpKD;
 				
 				for(var ii = 0; ii < entries.length; ii++)
 				{
@@ -427,13 +612,29 @@
 					tmpOut = parseFloat(entries[ii][OUTS]);
 					
 					if(!isNaN(tmpHit))
+					{
 						totalHits += tmpHit;
-						
+					}
 					if(!isNaN(tmpOut))
+					{
 						totalOuts += tmpOut;
+						
+					}
 					
-					kdAvg += tmpHit / tmpOut;
+					tmpKD = tmpHit / tmpOut;
 					
+					if(!isNaN(tmpKD))
+					{
+						kdAvg += tmpKD;
+						if(tmpKD < kdMin)
+						{
+							kdMin = tmpKD;
+						}
+						if(tmpKD > kdMax)
+						{
+							kdMax = tmpKD;
+						}
+					}
 				}
 				
 				kdAvg /= n;
@@ -442,9 +643,14 @@
 				var outP = document.getElementById("avg-outs");
 				var kdP  = document.getElementById("kd");
 				
-				hitP.innerHTML = "Average Hits: " + (Math.round(totalHits / n * ACC) / ACC) + "</br>Total Hits: " + totalHits;
-				outP.innerHTML = "Average Outs: " + (Math.round(totalOuts / n * ACC) / ACC) + "</br>Total Outs: " + totalOuts;
-				kdP.innerHTML  = "KD: " + (Math.round(kdAvg * ACC) / ACC);
+				setKDSlider("kdslider", kdMin, kdAvg, kdMax);
+				console.log("Set KDSlider: " + kdMin + ", " + kdAvg + ", " + kdMax);
+				
+				hitP.innerHTML = (Math.round(totalHits / n * ACC) / ACC) + " Avg. Hits</br>" + totalHits + " Total Hits";
+				outP.innerHTML = (Math.round(totalOuts / n * ACC) / ACC) + " Avg. Outs</br>" + totalOuts + " Total Outs";
+				kdP.innerHTML  = (Math.round(kdMin * ACC) / ACC) + " Min KD<br/>" + 
+								(Math.round(kdAvg * ACC) / ACC) + " Avg. KD<br/>" + 
+								(Math.round(kdMax * ACC) / ACC) + " Max KD";
 			}
 			
 			function getCurrentPlayer()
