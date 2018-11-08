@@ -86,8 +86,8 @@
 			<div id="purple-button" class="team-button"onclick="showTeam('Purple')">Purple</div>
 		</div>
 		<div>
-			<div style="display: inline-block; width: 300px; ">
-				<h2 id="team-header"></h2>
+			<div style="display: inline-block; width: 400px; ">
+				<h2 id="team-header" style="text-align: center;"></h2>
 				<ul id="team-players" style="list-style: none">
 				</ul>
 			</div>
@@ -152,20 +152,38 @@
 				  border-radius: 50%;
 				}
 			</style>
-			<div style="display: inline-block; vertical-align: top;">
+			<div style="display: inline-block; vertical-align: top; position: relative; left: 20px; top: 50px; z-index: 3">
 				<div>
-					<p style="display: inline-block; text-align: center;">Include Playoffs: </p>
-					<label  class="switch" onclick="updateSettings()">
-					  <input id="filter-playoffs" type="checkbox" checked>
-					  <span class="slider round"></span>
-					</label>
+					<div style="display: inline-block;">
+						<p style="display: inline-block; text-align: center; width: 10em;">Include Playoffs: </p>
+						<label  class="switch" onclick="updateSettings()">
+						  <input id="filter-playoffs" type="checkbox" checked>
+						  <span class="slider round"></span>
+						</label>
+					</div>
+					<div style="display: inline-block; position: relative; left: 20px;">
+						<p style="display: inline-block; text-align: center; width: 5em;">TB: </p>
+						<label  class="switch" onclick="updateSettings()">
+						  <input id="filter-tb" type="checkbox" checked>
+						  <span class="slider round"></span>
+						</label>
+					</div>
 				</div>
 				<div>
-					<p style="display: inline-block; text-align: center;">Regular Season: </p>
-					<label class="switch" onclick="updateSettings()">
-					  <input id="filter-regular" type="checkbox" checked>
-					  <span class="slider round"></span>
-					</label>
+					<div style="display: inline-block;">
+						<p style="display: inline-block; text-align: center; width: 10em;">Regular Season: </p>
+						<label class="switch" onclick="updateSettings()">
+						  <input id="filter-regular" type="checkbox" checked>
+						  <span class="slider round"></span>
+						</label>
+					</div>
+					<div style="display: inline-block; position: relative; left: 20px;">
+						<p style="display: inline-block; text-align: center; width: 5em; ">CTF: </p>
+						<label  class="switch" onclick="updateSettings()">
+						  <input id="filter-ctf" type="checkbox" checked>
+						  <span class="slider round"></span>
+						</label>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -300,11 +318,13 @@
 			
 			var FILTER_PLAYOFFS = true;
 			var FILTER_REG_SEASON = true;
+			var FILTER_CTF = true;
+			var FILTER_TB = true;
 			
 			var ACC = 1000;
 			
 			var MAP = 0;
-			var TYPE = 1;
+			var GAMEMODE = 1;
 			var SIDE = 2;
 			var PLAYER_NAME = 3;
 			var TEAM = 4;
@@ -327,7 +347,6 @@
 			{
 				var entries = [];
 				
-				
 				if(FILTER_PLAYOFFS)
 				{
 					for(var ii = 0; ii < playoffDataEntries.length; ii++)
@@ -337,7 +356,11 @@
 							var entry = playoffDataEntries[ii].split(",");
 							if(entry[PLAYER_NAME] === player)
 							{
-								entries.push(entry);
+								console.log("'" + entry[GAMEMODE] + "'");
+								if((FILTER_CTF && entry[GAMEMODE] === "CTF") || (FILTER_TB && entry[GAMEMODE] === "TB"))
+								{
+									entries.push(entry);
+								}
 							}
 						}
 					}
@@ -353,7 +376,11 @@
 							var entry = regularDataEntries[ii].split(",");
 							if(entry[PLAYER_NAME] === player)
 							{
-								entries.push(entry);
+								console.log("'" + entry[GAMEMODE] + "'");
+								if((FILTER_CTF && entry[GAMEMODE] === "CTF") || (FILTER_TB && entry[GAMEMODE] === "TB"))
+								{
+									entries.push(entry);
+								}
 							}
 						}
 					}
@@ -365,9 +392,8 @@
 			{
 				FILTER_PLAYOFFS = document.getElementById("filter-playoffs").checked;
 				FILTER_REG_SEASON = document.getElementById("filter-regular").checked;
-				
-				console.log("Playoff: " + FILTER_PLAYOFFS);
-				console.log("Regular: " + FILTER_REG_SEASON);
+				FILTER_TB = document.getElementById("filter-tb").checked;
+				FILTER_CTF = document.getElementById("filter-ctf").checked;
 				
 				updateStats();
 			}
