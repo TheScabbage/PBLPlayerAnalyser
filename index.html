@@ -85,9 +85,16 @@
 			<div id="teal-button" class="team-button" onclick="showTeam('Teal')">Teal</div>
 			<div id="purple-button" class="team-button"onclick="showTeam('Purple')">Purple</div>
 		</div>
-		<h2 id="team-header"></h2>
-		<ul id="team-players" style="list-style: none">
-		</ul>
+		<div>
+			<div style="display: inline-block; width: 300px; outline-style: solid; outline-width: 2px;">
+				<h2 id="team-header"></h2>
+				<ul id="team-players" style="list-style: none">
+				</ul>
+			</div>
+			<div style="display: inline-block; outline-style: solid; outline-width: 2px;">
+				
+			</div>
+		</div>
 		<style>
 			#local-player-image {
 				position: relative;
@@ -217,7 +224,7 @@
 				}
 			];
 			
-			var ACC = 100;
+			var ACC = 1000;
 			
 			var MAP = 0;
 			var TYPE = 1;
@@ -242,26 +249,33 @@
 			function getEntriesByPlayer(player)
 			{
 				var entries = [];
-				for(var ii = 0; ii < playoffDataEntries.length; ii++)
+				
+				if(FILTER_PLAYOFFS)
 				{
-					if(playoffDataEntries[ii].includes(player))
+					for(var ii = 0; ii < playoffDataEntries.length; ii++)
 					{
-						var entry = playoffDataEntries[ii].split(",");
-						if(entry[PLAYER_NAME] === player)
+						if(playoffDataEntries[ii].includes(player))
 						{
-							entries.push(entry);
+							var entry = playoffDataEntries[ii].split(",");
+							if(entry[PLAYER_NAME] === player)
+							{
+								entries.push(entry);
+							}
 						}
 					}
 				}
-				for(var ii = 0; ii < regularDataEntries.length; ii++)
+				if(FILTER_REG_SEASON)
 				{
-					console.log(regularDataEntries[ii]);
-					if(regularDataEntries[ii].includes(player))
+					for(var ii = 0; ii < regularDataEntries.length; ii++)
 					{
-						var entry = regularDataEntries[ii].split(",");
-						if(entry[PLAYER_NAME] === player)
+						console.log(regularDataEntries[ii]);
+						if(regularDataEntries[ii].includes(player))
 						{
-							entries.push(entry);
+							var entry = regularDataEntries[ii].split(",");
+							if(entry[PLAYER_NAME] === player)
+							{
+								entries.push(entry);
+							}
 						}
 					}
 				}
@@ -276,44 +290,41 @@
 				var entries = getEntriesByPlayer(playerName);
 				console.log("Found " + entries.length + " related to player " + playerName);
 				
-				var hits = 0;
-				var outs = 0;
-				
-				for(var ii = 0; ii < entries.length; ii++)
-				{
-					//console.log(entries[ii]);
-					
-					var tempHits = parseFloat(entries[ii][HITS]);
-					var tempOuts = parseFloat(entries[ii][OUTS]);
-				
-					if(!isNaN(tempHits))
-					{
-						hits += tempHits;
-					}
-					if(!isNaN(tempOuts))
-					{
-						outs += tempOuts;
-					}
-					
-					
-					//console.log(parseFloat(entries[ii][HITS]));
-				}
-				
-				setStats(hits, outs, entries.length);
+				setStats(entries);
 			}
 			
 			
-			function setStats(hits, outs, length)
+			function setStats(entries)
 			{
+				var totalHits = 0, totalOuts = 0, kdAvg = 0;
+				var n = entries.length;
+				
+				var tmpHit, tmpOut;
+				
+				for(var ii = 0; ii < entries.length; ii++)
+				{
+					tmpHit = parseFloat(entries[ii][HITS]);
+					tmpOut = parseFloat(entries[ii][OUTS]);
+					
+					if(!isNaN(tmpHit))
+						totalHits += tmpHit;
+						
+					if(!isNaN(tmpOut))
+						totalOuts += tmpOut;
+					
+					kdAvg += tmpHit / tmpOut;
+					
+				}
+				
+				kdAvg /= n;
+				
 				var hitP = document.getElementById("avg-hits");
 				var outP = document.getElementById("avg-outs");
 				var kdP  = document.getElementById("kd");
 				
-				hitP.innerHTML = "Average Hits: " + (Math.round(hits / length * ACC) / ACC) + "</br>Total Hits: " + hits;
-				outP.innerHTML = "Average Outs: " + (Math.round(outs / length * ACC) / ACC) + "</br>Total Outs: " + outs;
-				kdP.innerHTML  = "KD: " + (Math.round(hits / outs * ACC) / ACC);
-				
-				
+				hitP.innerHTML = "Average Hits: " + (Math.round(totalHits / n * ACC) / ACC) + "</br>Total Hits: " + totalHits;
+				outP.innerHTML = "Average Outs: " + (Math.round(totalOuts / n * ACC) / ACC) + "</br>Total Outs: " + totalOuts;
+				kdP.innerHTML  = "KD: " + (Math.round(kdAvg * ACC) / ACC);
 			}
 			
 			function getCurrentPlayer()
