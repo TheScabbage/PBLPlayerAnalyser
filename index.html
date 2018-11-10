@@ -629,7 +629,7 @@
 				text-align: left;
 			}
 		</style>
-		<div>
+		<div style="height: 300px;">
 			<div class="map-biases-container">
 				<h2 id="map-bias-header" style="text-align: center; margin: 5px;"></h2>
 				<ul id="map-bias-list">
@@ -649,7 +649,7 @@
 			<p style="text-align: center;">Want the raw data? <a href="https://docs.google.com/spreadsheets/d/1BYbDtMrcRuiVSIb4PgTARim4pvQJ7Jo06AF04KhPUZ8/edit#gid=0" target="_blank">Download it here.</a></p>
 		</div>
 		
-				<script type="text/javascript">
+		<script type="text/javascript">
 			var currentPlayer = "";
 			var teams = [
 				{
@@ -959,8 +959,18 @@
 						}
 					}
 				}
-				
 				kdAvg /= n;
+				
+				if(kdMin === 999999)
+					kdMin = 0;
+				if(isNaN(kdAvg))
+					kdAvg = 0;
+				if(n === 0)
+				{
+					totalHits = 0;
+					totalOuts = 0;
+					n = 1;
+				}
 				
 				var hitS = document.getElementById("player-avg-hits");
 				var tHitS= document.getElementById("player-total-hits");
