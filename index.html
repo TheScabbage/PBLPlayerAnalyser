@@ -579,11 +579,13 @@
 				display: block;
 				text-align: center;
 				list-style-type: none;
+				max-height: 0px;
+				transition: max-height 0.4s;
 			}
 			
 			.map-bias-meter:hover {
 				background-color: #ced7e5;
-				transition: 0.1s;
+				transition: 1s;
 			}
 			
 			#map-bias-list {
@@ -1188,7 +1190,8 @@
 				addMapBias(list, "Quarry", mapEntries.quarry);
 				addMapBias(list, "Spillway", mapEntries.spillway);
 				
-				document.getElementById("map-bias-header").innerHTML = "Map Bias for " + entries[0][PLAYER_NAME];
+				if(entries.length > 0)
+					document.getElementById("map-bias-header").innerHTML = "Map Bias for " + entries[0][PLAYER_NAME];
 			}
 			
 			function generateGeneralMapBiases(entries)
@@ -1291,12 +1294,14 @@
 				setTimeout (
 					function ()
 					{
+						newLi.style["max-height"] = "100px";
+						
 						newLi.childNodes[1].style.width = blueWidth + "px";
 						newLi.childNodes[1].innerHTML = Math.round(blueKD / kdTotal * 100) / 100;
 						newLi.childNodes[2].style.width= redWidth + "px";
 						newLi.childNodes[2].innerHTML = Math.round(redKD / kdTotal * 100) / 100;
 					}
-				, 100);
+				, 10);
 				
 				list.appendChild(newLi);
 				
