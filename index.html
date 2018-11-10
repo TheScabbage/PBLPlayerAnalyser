@@ -562,7 +562,94 @@
 					</div>
 				</div>
 			</div>
-		<script type="text/javascript">
+		<style>
+			.map-biases-container{
+				display: inline-block;
+				width: 400px;
+				border: 0px;
+			}
+			
+			.general-map-biases-container {
+				width: 400px;
+				display: inline-block;
+				vertical-align: top;
+			}
+			
+			.map-bias-meter {
+				display: block;
+				text-align: center;
+				list-style-type: none;
+			}
+			
+			.map-bias-meter:hover {
+				background-color: #ced7e5;
+				transition: 0.1s;
+			}
+			
+			#map-bias-list {
+				margin: 0px;
+				border: 0px;
+				padding: 0px;
+			}
+			
+			#map-bias-list-2 {
+				margin: 0px;
+				border: 0px;
+				padding: 0px;
+			}
+			
+			#map-bias-list > p {
+				text-align: center;
+				text-color: yellow;
+			}
+			
+			.map-bias-meter-red {
+				display: inline-block;
+				position: relative;
+				height: 4px;
+				background-color: red;
+				margin: 0px;
+				border: 0px;
+				width: 0px;
+				transition: 0.3s;
+				color: red;
+				text-align: right;
+			}
+			
+			.map-bias-meter-blue {
+				display: inline-block;
+				position: relative;
+				height: 4px;
+				background-color: blue;
+				margin: 0px;
+				border: 0px;
+				width: 0px;
+				transition: 0.3s;
+				color: blue;
+				text-align: left;
+			}
+		</style>
+		<div>
+			<div class="map-biases-container">
+				<h2 id="map-bias-header" style="text-align: center; margin: 5px;"></h2>
+				<ul id="map-bias-list">
+					
+				</ul>
+			</div>
+			<div class="general-map-biases-container">
+				<h2 id="map-bias-header-2" style="text-align: center; margin: 5px;">Global Map Bias</h2>
+				<ul id="map-bias-list-2">
+					
+				</ul>
+			</div>
+		</div>
+		<div style="height: 100px;">
+		</div>
+		<div>
+			<p style="text-align: center;">Want the raw data? <a href="https://docs.google.com/spreadsheets/d/1BYbDtMrcRuiVSIb4PgTARim4pvQJ7Jo06AF04KhPUZ8/edit#gid=0" target="_blank">Download it here.</a></p>
+		</div>
+		
+				<script type="text/javascript">
 			var currentPlayer = "";
 			var teams = [
 				{
@@ -655,7 +742,7 @@
 			
 			var playerCosts = "alugo3,11\nBassna,1\nBigRedRobotOfDoom,30\nBorg,100\nBuck,62\nChaseJake,32\nchesamo,0\nCool_D,34\nDavidBengt,109\nDaybridgeGhost,60\nDenver.dash,4\nDinoman715,6\nDwangler,72\nenigmaticeva,131\nEVR-1,0\nFancyam,63\nfarrerz,16\nFastrabbit17,80\nfor2dk,12\nGoodBet,156\nHoborg,30\njamlikejelly,20\njongyi12,115\njoshie,121\nKimbah,12\nLoaded_Lemons,113\nmch,21\nmichaelholland2015,32\nOmtzerioni,63\nOttolotl,112\npcfixit,45\nPengoPlays,1\nPigsty55,11\nplabick,3\nPriscilla,109\nrmmm1m,91\nRobert_ssbn732,0\nScabbage,42\nserra,80\nSkelly,49\nSmellykid83,101\nSparklingrabbit,55\nStairChicken,160\nThe_Woman,0\nthumperthegod,0\nUnicornPrincess,18\nunlistedgamer,0\nWeedAndHops,36\nWillybub,18".split("\n");
 			
-			generateMapBiases();
+			generateGeneralMapBiases(getEntries());
 			
 			function getEntries()
 			{
@@ -825,6 +912,7 @@
 				console.log("Found " + entries.length + " related to player " + playerName);
 				setStats(entries);
 				generateMapBiases(entries);
+				generateGeneralMapBiases(getEntries());
 			}
 			
 			function onProfileLoad()
@@ -1048,177 +1136,167 @@
 			}
 		
 			function generateMapBiases(entries)
+			{
+				var mapEntries = 
 				{
-					var mapEntries = 
-					{
-						river: [],
-						homestead: [],
-						clearcut: [],
-						quarry: [],
-						spillway: []
-					};
-					var entry;
-					for(var ii = 0; ii < entries.length; ii++)
-					{
-						entry = entries[ii];
-						switch(entry[MAP].toLowerCase())
-						{
-							case "river":
-								mapEntries.river.push(entry);
-								break;
-							case "homestead":
-								mapEntries.homestead.push(entry);
-								break;
-							case "clear cut":
-								mapEntries.clearcut.push(entry);
-								break;
-							case "quarry":
-								mapEntries.quarry.push(entry);
-								break;
-							case "spillway":
-								mapEntries.spillway.push(entry);
-								break;
-							
-						}
-					}
-					$("#map-bias-list").empty();
-					addMapBias("River", mapEntries.river);
-					addMapBias("Homestead", mapEntries.homestead);
-					addMapBias("Clear Cut", mapEntries.clearcut);
-					addMapBias("Quarry", mapEntries.quarry);
-					addMapBias("Spillway", mapEntries.spillway);
-				}
-				
-				function addMapBias(name, entries)
+					river: [],
+					homestead: [],
+					clearcut: [],
+					quarry: [],
+					spillway: []
+				};
+				var entry;
+				for(var ii = 0; ii < entries.length; ii++)
 				{
-					if(entries.length == 0)
+					entry = entries[ii];
+					switch(entry[MAP].toLowerCase())
 					{
-						return;
-					}
-					var list = document.getElementById("map-bias-list");
-					var newLi = document.createElement("li");
-					newLi.classList.add("map-bias-meter");
-					
-					var redKD = 0;
-					var blueKD= 0;
-					var winAvg= 0;
-					
-					for(var ii = 0; ii < entries.length; ii++)
-					{
-						hits = parseFloat(entries[ii][HITS]);
-						outs = parseFloat(entries[ii][OUTS]);
-						win = parseFloat(entries[ii][GAME_OUTCOME]);
+						case "river":
+							mapEntries.river.push(entry);
+							break;
+						case "homestead":
+							mapEntries.homestead.push(entry);
+							break;
+						case "clear cut":
+							mapEntries.clearcut.push(entry);
+							break;
+						case "quarry":
+							mapEntries.quarry.push(entry);
+							break;
+						case "spillway":
+							mapEntries.spillway.push(entry);
+							break;
 						
-						if(!isNaN(hits) && !isNaN(outs))
+					}
+				}
+				$("#map-bias-list").empty();
+
+				var list = document.getElementById("map-bias-list");
+				addMapBias(list, "River", mapEntries.river);
+				addMapBias(list, "Homestead", mapEntries.homestead);
+				addMapBias(list, "Clear Cut", mapEntries.clearcut);
+				addMapBias(list, "Quarry", mapEntries.quarry);
+				addMapBias(list, "Spillway", mapEntries.spillway);
+				
+				document.getElementById("map-bias-header").innerHTML = "Map Bias for " + entries[0][PLAYER_NAME];
+			}
+			
+			function generateGeneralMapBiases(entries)
+			{
+				
+				console.log("Processing map bias for " + entries.length + " entries.");
+				var mapEntries = 
+				{
+					river: [],
+					homestead: [],
+					clearcut: [],
+					quarry: [],
+					spillway: []
+				};
+				var entry;
+				for(var ii = 0; ii < entries.length; ii++)
+				{
+					entry = entries[ii];
+					switch(entry[MAP].toLowerCase())
+					{
+						case "river":
+							mapEntries.river.push(entry);
+							break;
+						case "homestead":
+							mapEntries.homestead.push(entry);
+							break;
+						case "clear cut":
+							mapEntries.clearcut.push(entry);
+							break;
+						case "quarry":
+							mapEntries.quarry.push(entry);
+							break;
+						case "spillway":
+							mapEntries.spillway.push(entry);
+							break;
+						
+					}
+				}
+				$("#map-bias-list-2").empty();
+				
+				var list = document.getElementById("map-bias-list-2");
+				addMapBias(list, "River", mapEntries.river);
+				addMapBias(list, "Homestead", mapEntries.homestead);
+				addMapBias(list, "Clear Cut", mapEntries.clearcut);
+				addMapBias(list, "Quarry", mapEntries.quarry);
+				addMapBias(list, "Spillway", mapEntries.spillway);
+			}
+			
+			function addMapBias(list, name, entries)
+			{
+				if(entries.length == 0)
+				{
+					return;
+				}
+				
+				var newLi = document.createElement("li");
+				newLi.classList.add("map-bias-meter");
+				
+				var redKD = 0;
+				var blueKD= 0;
+				var winAvg= 0;
+				
+				for(var ii = 0; ii < entries.length; ii++)
+				{
+					hits = parseFloat(entries[ii][HITS]);
+					outs = parseFloat(entries[ii][OUTS]);
+					win = parseFloat(entries[ii][GAME_OUTCOME]);
+					
+					if(!isNaN(hits) && !isNaN(outs))
+					{
+						if(entries[ii][SIDE] === "Red")
 						{
-							if(entries[ii][SIDE] === "Red")
-							{
-								redKD += hits / outs;
-							}else if(entries[ii][SIDE] === "Blue")
-							{
-								blueKD+= hits / outs;
-							}else
-							{
-								console.log("WARNING: Invalid value for team side '" + entries[ii][SIDE] + "' in following entry:");
-								console.log(entries[ii]);
-							}
+							redKD += hits / outs;
+						}else if(entries[ii][SIDE] === "Blue")
+						{
+							blueKD+= hits / outs;
+						}else
+						{
+							console.log("WARNING: Invalid value for team side '" + entries[ii][SIDE] + "' in following entry:");
+							console.log(entries[ii]);
 						}
 					}
-					redKD  /= entries.length;
-					blueKD /= entries.length;
-					
-					winAvg /= entries.length;
-					winAvg  = (winAvg + 1) / 2;
-					
-					var redWidth, blueWidth;
-					newLi.innerHTML = "<p style=\"height: 10px;\">" + name + "</p><div class=\"map-bias-meter-blue\"></div><div class=\"map-bias-meter-red\"></div>";
-					var kdTotal = (redKD + blueKD);
-					
-					
-					redWidth = clamp(redKD / kdTotal * MAP_BIAS_SLIDER_WIDTH, 0, MAP_BIAS_SLIDER_WIDTH);
-					blueWidth= clamp(blueKD / kdTotal * MAP_BIAS_SLIDER_WIDTH, 0, MAP_BIAS_SLIDER_WIDTH);
-					
-					console.log("Blue style: " + newLi.childNodes[1].style);
-					
-					setTimeout (
-						function ()
-						{
-							newLi.childNodes[1].style.width = blueWidth + "px";
-							newLi.childNodes[2].style.width= redWidth + "px";
-						}
-					, 100);
-					
-					list.appendChild(newLi);
-					
-					document.getElementById("map-bias-header").innerHTML = "Map Bias for " + entries[0][PLAYER_NAME];
-
 				}
+				redKD  /= entries.length;
+				blueKD /= entries.length;
+				
+				winAvg /= entries.length;
+				winAvg  = (winAvg + 1) / 2;
+				
+				var redWidth, blueWidth;
+				newLi.innerHTML = "<p style=\"height: 20px;\">" + name + "</p><div class=\"map-bias-meter-blue\"></div><div class=\"map-bias-meter-red\"></div>";
+				var kdTotal = (redKD + blueKD);
 				
 				
-				function clamp(num, min, max) {
-				  return num <= min ? min : num >= max ? max : num;
-				}
+				redWidth = clamp(redKD / kdTotal * MAP_BIAS_SLIDER_WIDTH, 0, MAP_BIAS_SLIDER_WIDTH);
+				blueWidth= clamp(blueKD / kdTotal * MAP_BIAS_SLIDER_WIDTH, 0, MAP_BIAS_SLIDER_WIDTH);
+				
+				console.log("Blue style: " + newLi.childNodes[1].style);
+				
+				setTimeout (
+					function ()
+					{
+						newLi.childNodes[1].style.width = blueWidth + "px";
+						newLi.childNodes[1].innerHTML = Math.round(blueKD / kdTotal * 100) / 100;
+						newLi.childNodes[2].style.width= redWidth + "px";
+						newLi.childNodes[2].innerHTML = Math.round(redKD / kdTotal * 100) / 100;
+					}
+				, 100);
+				
+				list.appendChild(newLi);
+				
+				
+			}
+			
+			
+			function clamp(num, min, max) {
+			  return num <= min ? min : num >= max ? max : num;
+			}
 		</script>
-		<style>
-			.map-biases-container{
-				width: 400px;
-			}
-			
-			.map-bias-meter {
-				display: block;
-				text-align: center;
-				list-style-type: none;
-			}
-			
-			.map-bias-meter:hover {
-				background-color: #ced7e5;
-				transition: 0.1s;
-			}
-			
-			#map-bias-list {
-				margin: 0px;
-				border: 0px;
-				padding: 0px;
-			}
-			
-			#map-bias-list > p {
-				text-align: center;
-				text-color: yellow;
-			}
-			
-			.map-bias-meter-red {
-				display: inline-block;
-				position: relative;
-				height: 4px;
-				background-color: red;
-				margin: 0px;
-				border: 0px;
-				width: 0px;
-				transition: 0.3s;
-			}
-			
-			.map-bias-meter-blue {
-				display: inline-block;
-				position: relative;
-				height: 4px;
-				background-color: blue;
-				margin: 0px;
-				border: 0px;
-				width: 0px;
-				transition: 0.3s;
-			}
-		</style>
-		<div class="map-biases-container">
-			<h2 id="map-bias-header" style="text-align: center; margin: 5px;"></h2>
-			<ul id="map-bias-list">
-				<li class="map-bias-meter">
-				</li>
-			</ul>
-		</div>
-		<div style="height: 100px;">
-		</div>
-		<div>
-			<p style="text-align: center;">Want the raw data? <a href="https://docs.google.com/spreadsheets/d/1BYbDtMrcRuiVSIb4PgTARim4pvQJ7Jo06AF04KhPUZ8/edit#gid=0" target="_blank">Download it here.</a></p>
-		</div>
 	</body>
 </html>
