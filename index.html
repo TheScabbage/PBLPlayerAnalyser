@@ -648,6 +648,11 @@
 		<div style="height: 100px;">
 		</div>
 		<div>
+			<iframe id="cost-kd-chart" width="844.5" height="525.2741666666667" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTaAMgy3issLyEhinKSV5_SRTq5QHfohXkFBi4uVukuPysi6jHJPFvI5Zc30tuxk7sSV5jvksN5i6ts/pubchart?oid=1859913039&amp;format=interactive"></iframe>
+			
+		</div>
+		
+		<div>
 			<p style="text-align: center;">Want the raw data? <a href="https://docs.google.com/spreadsheets/d/1BYbDtMrcRuiVSIb4PgTARim4pvQJ7Jo06AF04KhPUZ8/edit#gid=0" target="_blank">Download it here.</a></p>
 		</div>
 		
@@ -695,6 +700,10 @@
 					players:["StairChicken","jongyi12","Dinoman715","chesamo","alugo3","Willybub"]
 				}
 			];
+			
+			var REG_PLAYOFFS_COST_CHART= "https://docs.google.com/spreadsheets/d/e/2PACX-1vTaAMgy3issLyEhinKSV5_SRTq5QHfohXkFBi4uVukuPysi6jHJPFvI5Zc30tuxk7sSV5jvksN5i6ts/pubchart?oid=1859913039&amp;format=interactive";
+			var REG_SEASON_COST_CHART  = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTaAMgy3issLyEhinKSV5_SRTq5QHfohXkFBi4uVukuPysi6jHJPFvI5Zc30tuxk7sSV5jvksN5i6ts/pubchart?oid=1218587917&amp;format=interactive";
+			var PLAYOFFS_COST_CHART    = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTaAMgy3issLyEhinKSV5_SRTq5QHfohXkFBi4uVukuPysi6jHJPFvI5Zc30tuxk7sSV5jvksN5i6ts/pubchart?oid=462347823&amp;format=interactive";
 			
 			var FILTER_PLAYOFFS = true;
 			var FILTER_REG_SEASON = true;
@@ -904,6 +913,7 @@
 				FILTER_TB = document.getElementById("filter-tb").checked;
 				FILTER_CTF = document.getElementById("filter-ctf").checked;
 				
+				
 				updateStats();
 			}
 			
@@ -915,6 +925,27 @@
 				setStats(entries);
 				generateMapBiases(entries);
 				generateGeneralMapBiases(getEntries());
+				
+				var chart = document.getElementById("cost-kd-chart");
+				var newSrc;
+				if(FILTER_PLAYOFFS && FILTER_REG_SEASON)
+				{
+					newSrc = REG_PLAYOFFS_COST_CHART;
+				}else if(FILTER_PLAYOFFS)
+				{
+					newSrc = PLAYOFFS_COST_CHART;
+				}else if(FILTER_REG_SEASON)
+				{
+					newSrc = REG_SEASON_COST_CHART;
+				}else
+				{
+					newSrc = REG_PLAYOFFS_COST_CHART;
+				}
+				
+				if(newSrc !== chart.src)
+				{
+					chart.src = newSrc;
+				}
 			}
 			
 			function onProfileLoad()
@@ -1288,8 +1319,6 @@
 				
 				redWidth = clamp(redKD / kdTotal * MAP_BIAS_SLIDER_WIDTH, 0, MAP_BIAS_SLIDER_WIDTH);
 				blueWidth= clamp(blueKD / kdTotal * MAP_BIAS_SLIDER_WIDTH, 0, MAP_BIAS_SLIDER_WIDTH);
-				
-				console.log("Blue style: " + newLi.childNodes[1].style);
 				
 				setTimeout (
 					function ()
