@@ -135,51 +135,131 @@ Homestead,TB,Red,michaelholland2015,Black,Yellow,28,21,0,20181106,3,1,8,1,3,7
 Homestead,TB,Red,Skelly,Black,Yellow,21,19,0,20181106,3,1,8,1,3,7
 Homestead,TB,Red,Fancyam,Black,Yellow,29,26,0,20181106,3,1,8,1,3,7
 Homestead,TB,Red,Ottolotl,Black,Yellow,22,21,0,20181106,3,1,8,1,3,7
-Homestead,TB,Blue,pcfixit,Green,Pink,16,20,0,20181110,1,1,NA,NA,5,1
-Homestead,TB,Blue,Fastrabbit17,Green,Pink,25,26,0,20181110,1,1,NA,NA,5,1
-Homestead,TB,Blue,DavidBengt,Green,Pink,28,24,0,20181110,1,1,NA,NA,5,1
-Homestead,TB,Blue,Omtzerioni,Green,Pink,31,28,0,20181110,1,1,NA,NA,5,1
-Homestead,TB,Red,Smellykid83,Pink,Green,36,29,0,20181110,1,-1,NA,NA,1,5
-Homestead,TB,Red,rmmm1m,Pink,Green,30,30,0,20181110,1,-1,NA,NA,1,5
-Homestead,TB,Red,WeedAndHops,Pink,Green,10,16,0,20181110,1,-1,NA,NA,1,5
-Homestead,TB,Red,PengoPlays,Pink,Green,22,25,0,20181110,1,-1,NA,NA,1,5
-Homestead,TB,Blue,Fastrabbit17,Green,Pink,12,23,0,20181110,1,-1,7,,5,1
-Homestead,TB,Blue,Omtzerioni,Green,Pink,24,27,0,20181110,1,-1,7,,5,1
-Homestead,TB,Blue,pcfixit,Green,Pink,14,20,0,20181110,1,-1,7,,5,1
-Homestead,TB,Blue,DavidBengt,Green,Pink,12,30,0,20181110,1,-1,7,,5,1
-Homestead,TB,Red,rmmm1m,Pink,Green,40,18,0,20181110,1,1,7,,1,5
-Homestead,TB,Red,Smellykid83,Pink,Green,26,19,0,20181110,1,1,7,,1,5
-Homestead,TB,Red,WeedAndHops,Pink,Green,5,12,0,20181110,1,1,7,,1,5
-Homestead,TB,Red,PengoPlays,Pink,Green,29,13,0,20181110,1,1,7,,1,5
-Homestead,TB,Blue,rmmm1m,Pink,Green,39,31,0,20181110,2,1,7,,1,5
-Homestead,TB,Blue,WeedAndHops,Pink,Green,9,15,0,20181110,2,1,7,,1,5
-Homestead,TB,Blue,Smellykid83,Pink,Green,30,34,0,20181110,2,1,7,,1,5
-Homestead,TB,Blue,PengoPlays,Pink,Green,15,20,0,20181110,2,1,7,,1,5
-Homestead,TB,Red,Omtzerioni,Green,Pink,39,23,0,20181110,2,-1,7,,5,1
-Homestead,TB,Red,pcfixit,Green,Pink,16,18,0,20181110,2,-1,7,,5,1
-Homestead,TB,Red,DavidBengt,Green,Pink,27,28,0,20181110,2,-1,7,,5,1
-Homestead,TB,Red,Fastrabbit17,Green,Pink,18,24,0,20181110,2,-1,7,,5,1
-Quarry,CTF,Blue,Dinoman715,Purple,White,16,40,0,20181110,1,-1,11,,,
-Quarry,CTF,Blue,StairChicken,Purple,White,42,42,0,20181110,1,-1,11,,,
-Quarry,CTF,Blue,jongyi12,Purple,White,28,44,0,20181110,1,-1,11,,,
-Quarry,CTF,Blue,Willybub,Purple,White,27,33,0,20181110,1,-1,11,,,
-Quarry,CTF,Red,Loaded_Lemons,White,Purple,43,35,1,20181110,1,1,11,,,
-Quarry,CTF,Red,Buck,White,Purple,17,5,0,20181110,1,1,11,,,
-Quarry,CTF,Red,Sparklingrabbit,White,Purple,46,35,0,20181110,1,1,11,,,
-Quarry,CTF,Red,ChaseJake,White,Purple,53,38,0,20181110,1,1,11,,,
-Quarry,CTF,Blue,ChaseJake,White,Purple,43,42,0,20181110,2,-1,11,,,
-Quarry,CTF,Blue,Buck,White,Purple,25,29,0,20181110,2,-1,11,,,
-Quarry,CTF,Blue,Loaded_Lemons,White,Purple,17,19,0,20181110,2,-1,11,,,
-Quarry,CTF,Blue,Sparklingrabbit,White,Purple,43,42,0,20181110,2,-1,11,,,
-Quarry,CTF,Red,Dinoman715,Purple,White,26,34,0,20181110,2,1,11,,,
-Quarry,CTF,Red,jongyi12,Purple,White,20,21,1,20181110,2,1,11,,,
-Quarry,CTF,Red,StairChicken,Purple,White,49,43,0,20181110,2,1,11,,,
-Quarry,CTF,Red,Willybub,Purple,White,37,30,0,20181110,2,1,11,,,
-Quarry,CTF,Blue,Willybub,Purple,White,34,35,0,20181110,3,-1,11,,,
-Quarry,CTF,Blue,StairChicken,Purple,White,41,44,0,20181110,3,-1,11,,,
-Quarry,CTF,Blue,Dinoman715,Purple,White,25,34,0,20181110,3,-1,11,,,
-Quarry,CTF,Blue,jongyi12,Purple,White,20,26,0,20181110,3,-1,11,,,
-Quarry,CTF,Red,ChaseJake,White,Purple,38,40,0,20181110,3,1,11,,,
-Quarry,CTF,Red,Sparklingrabbit,White,Purple,51,30,0,20181110,3,1,11,,,
-Quarry,CTF,Red,Loaded_Lemons,White,Purple,41,37,1,20181110,3,1,11,,,
-Quarry,CTF,Red,Buck,White,Purple,10,14,0,20181110,3,1,11,,,
+Homestead,TB,Blue,pcfixit,Green,Pink,16,20,0,20181110,-1,1,7,0,5,1
+Homestead,TB,Blue,Fastrabbit17,Green,Pink,25,26,0,20181110,-1,1,7,0,5,1
+Homestead,TB,Blue,DavidBengt,Green,Pink,28,24,0,20181110,-1,1,7,0,5,1
+Homestead,TB,Blue,Omtzerioni,Green,Pink,31,28,0,20181110,-1,1,7,0,5,1
+Homestead,TB,Red,Smellykid83,Pink,Green,36,29,0,20181110,-1,-1,7,1,1,5
+Homestead,TB,Red,rmmm1m,Pink,Green,30,30,0,20181110,-1,-1,7,1,1,5
+Homestead,TB,Red,WeedAndHops,Pink,Green,10,16,0,20181110,-1,-1,7,1,1,5
+Homestead,TB,Red,PengoPlays,Pink,Green,22,25,0,20181110,-1,-1,7,1,1,5
+Homestead,TB,Blue,Fastrabbit17,Green,Pink,12,23,0,20181110,1,-1,7,0,5,1
+Homestead,TB,Blue,Omtzerioni,Green,Pink,24,27,0,20181110,1,-1,7,0,5,1
+Homestead,TB,Blue,pcfixit,Green,Pink,14,20,0,20181110,1,-1,7,0,5,1
+Homestead,TB,Blue,DavidBengt,Green,Pink,12,30,0,20181110,1,-1,7,0,5,1
+Homestead,TB,Red,rmmm1m,Pink,Green,40,18,0,20181110,1,1,7,1,1,5
+Homestead,TB,Red,Smellykid83,Pink,Green,26,19,0,20181110,1,1,7,1,1,5
+Homestead,TB,Red,WeedAndHops,Pink,Green,5,12,0,20181110,1,1,7,1,1,5
+Homestead,TB,Red,PengoPlays,Pink,Green,29,13,0,20181110,1,1,7,1,1,5
+Homestead,TB,Blue,rmmm1m,Pink,Green,39,31,0,20181110,2,1,7,1,1,5
+Homestead,TB,Blue,WeedAndHops,Pink,Green,9,15,0,20181110,2,1,7,1,1,5
+Homestead,TB,Blue,Smellykid83,Pink,Green,30,34,0,20181110,2,1,7,1,1,5
+Homestead,TB,Blue,PengoPlays,Pink,Green,15,20,0,20181110,2,1,7,1,1,5
+Homestead,TB,Red,Omtzerioni,Green,Pink,39,23,0,20181110,2,-1,7,0,5,1
+Homestead,TB,Red,pcfixit,Green,Pink,16,18,0,20181110,2,-1,7,0,5,1
+Homestead,TB,Red,DavidBengt,Green,Pink,27,28,0,20181110,2,-1,7,0,5,1
+Homestead,TB,Red,Fastrabbit17,Green,Pink,18,24,0,20181110,2,-1,7,0,5,1
+Quarry,CTF,Blue,Dinoman715,Purple,White,16,40,0,20181110,1,-1,11,0,6,4
+Quarry,CTF,Blue,StairChicken,Purple,White,42,42,0,20181110,1,-1,11,0,6,4
+Quarry,CTF,Blue,jongyi12,Purple,White,28,44,0,20181110,1,-1,11,0,6,4
+Quarry,CTF,Blue,Willybub,Purple,White,27,33,0,20181110,1,-1,11,0,6,4
+Quarry,CTF,Red,Loaded_Lemons,White,Purple,43,35,1,20181110,1,1,11,1,4,6
+Quarry,CTF,Red,Buck,White,Purple,17,5,0,20181110,1,1,11,1,4,6
+Quarry,CTF,Red,Sparklingrabbit,White,Purple,46,35,0,20181110,1,1,11,1,4,6
+Quarry,CTF,Red,ChaseJake,White,Purple,53,38,0,20181110,1,1,11,1,4,6
+Quarry,CTF,Blue,ChaseJake,White,Purple,43,42,0,20181110,2,-1,11,1,4,6
+Quarry,CTF,Blue,Buck,White,Purple,25,29,0,20181110,2,-1,11,1,4,6
+Quarry,CTF,Blue,Loaded_Lemons,White,Purple,17,19,0,20181110,2,-1,11,1,4,6
+Quarry,CTF,Blue,Sparklingrabbit,White,Purple,43,42,0,20181110,2,-1,11,1,4,6
+Quarry,CTF,Red,Dinoman715,Purple,White,26,34,0,20181110,2,1,11,0,6,4
+Quarry,CTF,Red,jongyi12,Purple,White,20,21,1,20181110,2,1,11,0,6,4
+Quarry,CTF,Red,StairChicken,Purple,White,49,43,0,20181110,2,1,11,0,6,4
+Quarry,CTF,Red,Willybub,Purple,White,37,30,0,20181110,2,1,11,0,6,4
+Quarry,CTF,Blue,Willybub,Purple,White,34,35,0,20181110,3,-1,11,0,6,4
+Quarry,CTF,Blue,StairChicken,Purple,White,41,44,0,20181110,3,-1,11,0,6,4
+Quarry,CTF,Blue,Dinoman715,Purple,White,25,34,0,20181110,3,-1,11,0,6,4
+Quarry,CTF,Blue,jongyi12,Purple,White,20,26,0,20181110,3,-1,11,0,6,4
+Quarry,CTF,Red,ChaseJake,White,Purple,38,40,0,20181110,3,1,11,1,4,6
+Quarry,CTF,Red,Sparklingrabbit,White,Purple,51,30,0,20181110,3,1,11,1,4,6
+Quarry,CTF,Red,Loaded_Lemons,White,Purple,41,37,1,20181110,3,1,11,1,4,6
+Quarry,CTF,Red,Buck,White,Purple,10,14,0,20181110,3,1,11,1,4,6
+Clear Cut,TB,Blue,GoodBet,Orange,Pink,25,31,0,20181115,1,-1,9,-1,2,1
+Clear Cut,TB,Blue,Cool_D,Orange,Pink,13,22,0,20181115,1,-1,9,-1,2,1
+Clear Cut,TB,Blue,Dwangler,Orange,Pink,38,29,0,20181115,1,-1,9,-1,2,1
+Clear Cut,TB,Blue,thumperthegod,Orange,Pink,13,18,0,20181115,1,-1,9,-1,2,1
+Clear Cut,TB,Red,Scabbage,Pink,Orange,25,26,0,20181115,1,1,9,1,1,2
+Clear Cut,TB,Red,rmmm1m,Pink,Orange,25,26,0,20181115,1,1,9,1,1,2
+Clear Cut,TB,Red,PengoPlays,Pink,Orange,20,17,0,20181115,1,1,9,1,1,2
+Clear Cut,TB,Red,Smellykid83,Pink,Orange,30,20,0,20181115,1,1,9,1,1,2
+Clear Cut,TB,Blue,rmmm1m,Pink,Orange,29,28,0,20181115,2,1,9,1,1,2
+Clear Cut,TB,Blue,Smellykid83,Pink,Orange,32,20,0,20181115,2,1,9,1,1,2
+Clear Cut,TB,Blue,Scabbage,Pink,Orange,19,26,0,20181115,2,1,9,1,1,2
+Clear Cut,TB,Blue,PengoPlays,Pink,Orange,20,16,0,20181115,2,1,9,1,1,2
+Clear Cut,TB,Red,EVR-1,Orange,Pink,15,25,0,20181115,2,-1,9,-1,2,1
+Clear Cut,TB,Red,GoodBet,Orange,Pink,36,27,0,20181115,2,-1,9,-1,2,1
+Clear Cut,TB,Red,Cool_D,Orange,Pink,15,24,0,20181115,2,-1,9,-1,2,1
+Clear Cut,TB,Red,Dwangler,Orange,Pink,24,24,0,20181115,2,-1,9,-1,2,1
+Homestead,TB,Blue,Scabbage,Pink,Green,22,26,0,20181129,2,-1,7,-1,1,5
+Homestead,TB,Blue,PengoPlays,Pink,Green,22,19,0,20181129,2,-1,7,-1,1,5
+Homestead,TB,Blue,WeedAndHops,Pink,Green,16,23,0,20181129,2,-1,7,-1,1,5
+Homestead,TB,Blue,Son_Stone,Pink,Green,11,32,0,20181129,2,-1,7,-1,1,5
+Homestead,TB,Red,Omtzerioni,Green,Pink,33,20,0,20181129,2,1,7,1,5,1
+Homestead,TB,Red,DavidBengt,Green,Pink,33,17,0,20181129,2,1,7,1,5,1
+Homestead,TB,Red,pcfixit,Green,Pink,18,14,0,20181129,2,1,7,1,5,1
+Homestead,TB,Red,Fastrabbit17,Green,Pink,16,20,0,20181129,2,1,7,1,5,1
+Clear Cut,TB,Blue,Fastrabbit17,Green,Orange,18,25,0,20181129,1,-1,9,-1,5,2
+Clear Cut,TB,Blue,DavidBengt,Green,Orange,14,25,0,20181129,1,-1,9,-1,5,2
+Clear Cut,TB,Blue,pcfixit,Green,Orange,9,19,0,20181129,1,-1,9,-1,5,2
+Clear Cut,TB,Blue,Omtzerioni,Green,Orange,19,31,0,20181129,1,-1,9,-1,5,2
+Clear Cut,TB,Red,EVR-1,Orange,Green,20,13,0,20181129,1,1,9,1,2,5
+Clear Cut,TB,Red,GoodBet,Orange,Green,36,20,0,20181129,1,1,9,1,2,5
+Clear Cut,TB,Red,Dwangler,Orange,Green,30,13,0,20181129,1,1,9,1,2,5
+Clear Cut,TB,Red,Cool_D,Orange,Green,14,14,0,20181129,1,1,9,1,2,5
+Clear Cut,TB,Blue,GoodBet,Orange,Green,32,34,0,20181129,2,-1,9,1,2,5
+Clear Cut,TB,Blue,Cool_D,Orange,Green,20,20,0,20181129,2,-1,9,1,2,5
+Clear Cut,TB,Blue,Dwangler,Orange,Green,32,29,0,20181129,2,-1,9,1,2,5
+Clear Cut,TB,Blue,EVR-1,Orange,Green,14,17,0,20181129,2,-1,9,1,2,5
+Clear Cut,TB,Red,DavidBengt,Green,Orange,22,25,0,20181129,2,1,9,-1,5,2
+Clear Cut,TB,Red,Fastrabbit17,Green,Orange,18,24,0,20181129,2,1,9,-1,5,2
+Clear Cut,TB,Red,Omtzerioni,Green,Orange,43,29,0,20181129,2,1,9,-1,5,2
+Clear Cut,TB,Red,pcfixit,Green,Orange,17,20,0,20181129,2,1,9,-1,5,2
+Clear Cut,TB,Blue,Omtzerioni,Green,Orange,21,33,0,20181129,3,-1,9,-1,5,2
+Clear Cut,TB,Blue,DavidBengt,Green,Orange,21,25,0,20181129,3,-1,9,-1,5,2
+Clear Cut,TB,Blue,pcfixit,Green,Orange,8,14,0,20181129,3,-1,9,-1,5,2
+Clear Cut,TB,Blue,Fastrabbit17,Green,Orange,14,28,0,20181129,3,-1,9,-1,5,2
+Clear Cut,TB,Red,EVR-1,Orange,Green,16,15,0,20181129,3,1,9,1,2,5
+Clear Cut,TB,Red,Cool_D,Orange,Green,19,15,0,20181129,3,1,9,1,2,5
+Clear Cut,TB,Red,Dwangler,Orange,Green,29,13,0,20181129,3,1,9,1,2,5
+Clear Cut,TB,Red,GoodBet,Orange,Green,36,21,0,20181129,3,1,9,1,2,5
+Quarry,CTF,Blue,Denver.dash,Teal,Orange,10,31,1,20181207,1,-1,12,-1,8,2
+Quarry,CTF,Blue,DaybridgeGhost,Teal,Orange,37,40,0,20181207,1,-1,12,-1,8,2
+Quarry,CTF,Blue,Borg,Teal,Orange,48,47,0,20181207,1,-1,12,-1,8,2
+Quarry,CTF,Blue,joshie,Teal,Orange,24,34,0,20181207,1,-1,12,-1,8,2
+Quarry,CTF,Red,GoodBet,Orange,Teal,51,27,0,20181207,1,1,12,1,2,8
+Quarry,CTF,Red,Cool_D,Orange,Teal,33,28,0,20181207,1,1,12,1,2,8
+Quarry,CTF,Red,mch,Orange,Teal,27,30,2,20181207,1,1,12,1,2,8
+Quarry,CTF,Red,Dwangler,Orange,Teal,41,34,0,20181207,1,1,12,1,2,8
+Quarry,CTF,Blue,Cool_D,Orange,Teal,18,12,1,20181207,2,1,12,1,2,8
+Quarry,CTF,Blue,goodBet,Orange,Teal,26,14,1,20181207,2,1,12,1,2,8
+Quarry,CTF,Blue,Dwangler,Orange,Teal,14,12,1,20181207,2,1,12,1,2,8
+Quarry,CTF,Blue,mch,Orange,Teal,12,17,0,20181207,2,1,12,1,2,8
+Quarry,CTF,Red,joshie,Teal,Orange,8,12,0,20181207,2,-1,12,-1,8,2
+Quarry,CTF,Red,Borg,Teal,Orange,15,20,0,20181207,2,-1,12,-1,8,2
+Quarry,CTF,Red,for2dk,Teal,Orange,11,21,1,20181207,2,-1,12,-1,8,2
+Quarry,CTF,Red,DaybridgeGhost,Teal,Orange,21,17,0,20181207,2,-1,12,-1,8,2
+Spillway,TB,Blue,GoodBet,Orange,Purple,6,7,0,20181214,1,1,13,1,2,8
+Spillway,TB,Blue,mch,Orange,Purple,15,22,0,20181214,1,1,13,1,2,8
+Spillway,TB,Blue,Dwangler,Orange,Purple,23,22,0,20181214,1,1,13,1,2,8
+Spillway,TB,Blue,Cool_D,Orange,Purple,25,18,0,20181214,1,1,13,1,2,8
+Spillway,TB,Red,Willybub,Purple,Orange,24,23,0,20181214,1,-1,13,-1,8,2
+Spillway,TB,Red,Dinoman715,Purple,Orange,9,20,0,20181214,1,-1,13,-1,8,2
+Spillway,TB,Red,StairChicken,Purple,Orange,33,30,0,20181214,1,-1,13,-1,8,2
+Spillway,TB,Red,jongyi12,Purple,Orange,14,27,0,20181214,1,-1,13,-1,8,2
+Spillway,TB,Blue,Dinoman715,Purple,Orange,22,21,0,20181214,1,-1,13,-1,2,8
+Spillway,TB,Blue,StairChicken,Purple,Orange,31,31,0,20181214,1,-1,13,-1,2,8
+Spillway,TB,Blue,Willybub,Purple,Orange,25,29,0,20181214,1,-1,13,-1,2,8
+Spillway,TB,Blue,jongyi12,Purple,Orange,8,19,0,20181214,1,-1,13,-1,2,8
+Spillway,TB,Red,Dwangler,Orange,Purple,22,24,0,20181214,1,1,13,1,8,2
+Spillway,TB,Red,GoodBet,Orange,Purple,38,23,0,20181214,1,1,13,1,8,2
+Spillway,TB,Red,Cool_D,Orange,Purple,19,22,0,20181214,1,1,13,1,8,2
+Spillway,TB,Red,mch,Orange,Purple,21,17,0,20181214,1,1,13,1,8,2
